@@ -53,15 +53,14 @@ We can see the results using the prediction workflow:
 
 .. code-block:: python
 
-    from pykeen.models.predict import get_tail_prediction_df
+    from pykeen.predict import predict_target
 
-    df = get_tail_prediction_df(
+    df = predict_target(
         model=result.model,
-        head_label="belgium",
-        relation_label="locatedin",
+        tail="belgium",
+        relation="locatedin",
         triples_factory=result.training,
-        add_novelties=False,
-    )
+    ).df
 
 which returns a dataframe of all tail candidate entities sorted according to the predicted score.
 The index in this sorted list is essentially the *rank* of the correct answer.
